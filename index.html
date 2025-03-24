@@ -3,30 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SwollenHippo - Login</title>
+    <title>Student Evaluation System</title>
     <link href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/pulse/bootstrap.min.css" rel="stylesheet">
 </head>
 <body class="bg-light">
     <div class="container d-flex justify-content-center align-items-center min-vh-100">
-        <form class="card p-4 col-12 col-sm-8 col-md-5 col-lg-4" id="frmLogin">
+        <form class="card col-12 col-md-10 col-lg-8" id="frmLogin">
             <div class="card-body">
-                <h1 class="text-center mb-0 text-primary">SwollenHippo</h1>
-                <h3 class="text-center mb-4">Adminstrator Login</h3>
-                <input id="txtLogUsername" class="form-control" type="email" placeholder="johndoe@email.com" aria-label="input email">
-                <input id="txtLogPassword" class="form-control mt-2" type="password" placeholder="password" aria-label="input password">
+                <h1 class="text-center mb-0 text-primary">Student Evaluation System</h1>
+                <hr/>
+                <h5 class="text-center mt-2 mb-4">Welcome to the Student Evaluation System!</h5>
+                <h3 class="text-center mb-4">Login</h3>
+                <input id="txtLogUsername" class="form-control" type="email" placeholder="Email Address" aria-label="input email">
+                <input id="txtLogPassword" class="form-control mt-2" type="password" placeholder="Password" aria-label="input password">
                 <button class="btn btn-primary col-12 mt-2" type="button" id="btnLogin">Log In</button>
-                <button class="btn btn-link col-12 mt-0" type="button" id="btnSwapLogin">Need an account, register here</button>
+                <hr/>
+                <h6 class="text-center col-12 mt-0">Need an account?</h6>
+                <div class="container d-flex justify-content-center">
+                    <button class="btn btn-link" type="button" id="btnSwapFacultyLogin">Register faculty account</button>
+                    <button class="btn btn-link" type="button" id="btnSwapStudentLogin">Register student account</button>
+                </div>
             </div>
         </form>
-        <form class="card col-12 col-md-5 col-lg-6" id="frmRegister" style="display: none;">
+        <form class="card col-12 col-md-10 col-lg-8" id="frmRegisterFaculty" style="display: none;">
             <div class ="card-body">
-                <h1 class="text-center mb-0 text-primary">SwollenHippo</h1>
-                <h3 class="text-center mb-4 ">Registration Form</h3>
-                <input id="txtFirstName" class="form-control mt-2" type="text" placeholder="First Name" aria-label="firstname">
-                <input id="txtLastName" class="form-control mt-2" type="text" placeholder="Last Name" aria-label="lastname">
-                <input id="txtRegEmail" class="form-control" type="email" placeholder="Example@email.com" aria-label="email">
-                <input id="txtRegPassword" class="form-control mt-2" type="password" placeholder="Password" aria-label="password">
-                <button class="btn btn-primary col-12 mt-2" type="button" id="btnRegister" aria-label="Register Button">Register</button>
+                <h3 class="text-center mb-4 ">Faculty Registration Form</h3>
+                <fieldset>
+                    <legend class="font-weight-bold h6">Full Name</legend>
+                    <input id="txtFirstName" class="form-control mt-2" type="text" placeholder="First Name" aria-label="enter your first name">
+                    <input id="txtLastName" class="form-control mt-2" type="text" placeholder="Last Name" aria-label="enter your last name">
+                </fieldset>
+                <fieldset class="mt-4">
+                    <legend class="font-weight-bold h6">Account Information</legend>
+                    <input id="txtRegEmail" class="form-control mt-2" type="email" placeholder="Email Address" aria-label="enter your email address">
+                    <input id="txtRegPassword" class="form-control mt-2" type="password" placeholder="Password" aria-label="enter your password">
+                    <input id="txtConfirmPassword" class="form-control mt-2" type="password" placeholder="Confirm Password" aria-label="confirm your password">
+                </fieldset>
+                <hr/>
+                <div style="text-align: center;">
+                    <button class="btn btn-primary col-12 mt-2" type="button" id="btnRegisterFaculty" aria-label="Register Button">Register</button>
+                    <button id="btnFacultyCancel" class="btn btn-link mt-2" type="button">Cancel</button>
+                </div>
+            </div>
+        </form>
+        <form class="card col-12 col-md-10 col-lg-8" id="frmRegisterStudent" style="display: none;">
+            <div class ="card-body">
+                <h3 class="text-center mb-4 ">Student Registration Form</h3>
+                <fieldset>
+                    <legend class="font-weight-bold h6">Full Name</legend>
+                    <input id="txtStudentFirstName" class="form-control mt-2" type="text" placeholder="First Name" aria-label="enter your first name">
+                    <input id="txtStudentLastName" class="form-control mt-2" type="text" placeholder="Last Name" aria-label="enter your last name">
+                </fieldset>
+                <fieldset class="mt-4">
+                    <legend class="font-weight-bold h6">Account Information</legend>
+                    <input id="txtRegStudentEmail" class="form-control mt-2" type="email" placeholder="Email Address" aria-label="enter your email address">
+                    <input id="txtRegStudentPassword" class="form-control mt-2" type="password" placeholder="Password" aria-label="enter your password">
+                    <input id="txtConfirmStudentPassword" class="form-control mt-2" type="password" placeholder="Confirm Password" aria-label="confirm your password">
+                </fieldset>
+                <fieldset class="mt-4">
+                    <legend class="font-weight-bold h6">Contact Information</legend>
+                    <input id="txtPhone" class="form-control mt-2" type="tel" placeholder="Phone Number" aria-label="enter your phone number">
+                    <input id="txtDiscord" class="form-control mt-2" type="text" placeholder="Discord Username" aria-label="enter your discord username if applicable">
+                    <input id="txtTeams" class="form-control mt-2" type="email" placeholder="Microsoft Teams Email" aria-label="enter your microsoft teams email">
+                </fieldset>
+                <hr/>
+                <div style="text-align: center;">
+                    <button class="btn btn-primary col-12 mt-2" type="button" id="btnRegisterStudent" aria-label="Register Button">Register</button>
+                    <button id="btnStudentCancel" class="btn btn-link mt-2" type="button">Cancel</button>
+                </div>
             </div>
         </form>
     </div>
@@ -44,7 +88,7 @@
 
             if(!regEmail.test(strUsername)){
                 blnError = true
-                strMessage += '<p class="mb-0 mt-0">Username must be an email address</p>'
+                strMessage += '<p class="mb-0 mt-0">Enter a valid email address</p>'
             }
             if(strPassword.length < 1){
                 blnError = true
@@ -53,74 +97,176 @@
             
             if(blnError) {
                 Swal.fire({
-                    title: "oh no, you have an error!",
+                    title: "Error!",
                     html: strMessage,
                     icon: "error"
                 });
             } else {
                 Swal.fire({
                     title: "Success!",
-                    text: "Login Successful. +1000 V-bucks",
+                    text: "Login Successful!",
                     icon: "success"
                 });
             }
         })
-        document.querySelector("#btnRegister").addEventListener("click", (e) => {
-            const regEmail = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/
-            const regZip = /^\d{5}(-\d{4})?$/
-            const regPhone = /^\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}$/
+        document.querySelector("#btnRegisterFaculty").addEventListener("click", (e) => {
+            const regEmail = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+edu$/
 
-            let strUsername = document.querySelector("#txtRegEmail").value
-            const strPassword = $('#txtRegPassword').val()
-            let strFirstName = document.querySelector("#txtFirstName").value
-            let strLastName = document.querySelector("#txtLastName").value
+            let strUsername = document.querySelector('#txtRegEmail').value
+            const strPassword = document.querySelector('#txtRegPassword').value
+            const strConfirmPassword = document.querySelector('#txtConfirmPassword').value
+            let strFirstName = document.querySelector('#txtFirstName').value
+            let strLastName = document.querySelector('#txtLastName').value
 
             let blnError = false
             let strMessage = ''
             
             if(!regEmail.test(strUsername)){
                 blnError = true
-                strMessage += '<p class="mb-0 mt-0">Username must be an email address</p>'
+                strMessage += '<p class="mb-0 mt-0">Enter a valid faculty email address (.edu)</p>'
             }
 
             if(strPassword.length < 1){
                 blnError = true
-                strMessage += '<p class="mb-0 mt-0">Password Cannot Be Blank</p>'
+                strMessage += '<p class="mb-0 mt-0">Password cannot be blank</p>'
+            }
+
+            if(strPassword !== strConfirmPassword){
+                blnError = true
+                strMessage += '<p class="mb-0 mt-0">Passwords do not match</p>'
             }
 
             if(strFirstName.length < 1){
                 blnError = true
-                strMessage += '<p class="mb-0 mt-0">First Name Cannot Be Empty</p>'
+                strMessage += '<p class="mb-0 mt-0">First Name cannot be blank</p>'
             }
 
             if(strLastName.length < 1){
                 blnError = true
-                strMessage += '<p class="mb-0 mt-0">Last Name Cannot Be Empty</p>'
+                strMessage += '<p class="mb-0 mt-0">Last Name cannot be blank</p>'
             }
 
             if(blnError) {
                 Swal.fire({
-                    title: "oh no, you have an error!",
+                    title: "Error!",
                     html: strMessage,
                     icon: "error"
                 });
             } else {
                 Swal.fire({
                     title: "Success!",
-                    text: "Login Successful. +1000 V-Bucks",
+                    text: "Registration Successful.",
                     icon: "success"
                 });
+                $('#frmRegisterFaculty').trigger('reset');
+                $('#frmRegisterFaculty').slideUp('fast');
+                setTimeout(function() {
+                    $('#frmLogin').slideDown('fast');
+                }, 400);
             }
         });
 
-        $('#btnSwapLogin').on('click',function(){
-            $('#frmLogin').slideUp('slow')
-            $('#frmRegister').slideDown('fast')
+        document.querySelector("#btnRegisterStudent").addEventListener("click", (e) => {
+            const regEmail = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/
+            const regPhone = /^\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}$/
+            let strEmail = document.querySelector('#txtRegStudentEmail').value
+            const strPassword = document.querySelector('#txtRegStudentPassword').value
+            const strConfirmPassword = document.querySelector('#txtConfirmStudentPassword').value
+            let strFirstName = document.querySelector('#txtStudentFirstName').value
+            let strLastName = document.querySelector('#txtStudentLastName').value
+            let strPhone = document.querySelector('#txtPhone').value
+            let strDiscord = document.querySelector('#txtDiscord').value
+            let strTeams = document.querySelector('#txtTeams').value
+
+            let blnError = false
+            let strMessage = ''
+            
+            if(!regEmail.test(strEmail)){
+                blnError = true
+                strMessage += '<p class="mb-0 mt-0">Enter a valid email address</p>'
+            }
+
+            if(strPassword.length < 1){
+                blnError = true
+                strMessage += '<p class="mb-0 mt-0">Password cannot be blank</p>'
+            }
+
+            if(strPassword !== strConfirmPassword){
+                blnError = true
+                strMessage += '<p class="mb-0 mt-0">Passwords do not match</p>'
+            }
+
+            if(strFirstName.length < 1){
+                blnError = true
+                strMessage += '<p class="mb-0 mt-0">First Name cannot be blank</p>'
+            }
+
+            if(strLastName.length < 1){
+                blnError = true
+                strMessage += '<p class="mb-0 mt-0">Last name cannot be blank</p>'
+            }
+
+            if(!regPhone.test(strPhone)){
+                blnError = true
+                strMessage += '<p class="mb-0 mt-0">Enter a valid US phone number</p>'
+            }
+
+            if(strDiscord.length < 1){
+                blnError = true
+                strMessage += '<p class="mb-0 mt-0">Discord username cannot be blank</p>'
+            }
+
+            if(!regEmail.test(strTeams)){
+                blnError = true
+                strMessage += '<p class="mb-0 mt-0">Enter a valid Microsoft Teams email address</p>'
+            }
+
+            if(blnError) {
+                Swal.fire({
+                    title: "Error!",
+                    html: strMessage,
+                    icon: "error"
+                });
+            } else {
+                Swal.fire({
+                    title: "Success!",
+                    text: "Registration Successful.",
+                    icon: "success"
+                });
+                $('#frmRegisterStudent').trigger('reset');
+                $('#frmRegisterStudent').slideUp('fast');
+                setTimeout(function() {
+                    $('#frmLogin').slideDown('fast');
+                }, 400);
+            }
         });
 
-        $('#btnRegister').on('click', function() {
-            $('#frmRegister').slideUp('slow');
-            $('#frmLogin').slideDown('fast');
+        $('#btnSwapFacultyLogin').on('click',function(){
+            $('#frmLogin').slideUp('fast')
+            setTimeout(function() {
+                $('#frmRegisterFaculty').slideDown('fast');
+            }, 400);
+        });
+
+        $('#btnSwapStudentLogin').on('click',function(){
+            $('#frmLogin').slideUp('fast')
+            setTimeout(function() {
+                $('#frmRegisterStudent').slideDown('fast');
+            }, 400);
+        });
+
+        $('#btnFacultyCancel').on('click', function() {
+            $('#frmRegisterFaculty').slideUp('fast');
+            setTimeout(function() {
+                $('#frmLogin').slideDown('fast');
+            }, 400);
+        });
+
+        $('#btnStudentCancel').on('click', function() {
+            $('#frmRegisterStudent').slideUp('fast');
+            setTimeout(function() {
+                $('#frmLogin').slideDown('fast');
+            }, 400);
         });
 
     </script>
