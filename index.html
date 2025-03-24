@@ -22,17 +22,10 @@
             <div class ="card-body">
                 <h1 class="text-center mb-0 text-primary">SwollenHippo</h1>
                 <h3 class="text-center mb-4 ">Registration Form</h3>
+                <input id="txtFirstName" class="form-control mt-2" type="text" placeholder="First Name" aria-label="firstname">
+                <input id="txtLastName" class="form-control mt-2" type="text" placeholder="Last Name" aria-label="lastname">
                 <input id="txtRegEmail" class="form-control" type="email" placeholder="Example@email.com" aria-label="email">
                 <input id="txtRegPassword" class="form-control mt-2" type="password" placeholder="Password" aria-label="password">
-                <input id="txtFirstName" class="form-control mt-2" type="text" placeholder="First Name" aria-label="firstname">
-                <input id="txtMiddleName" class="form-control mt-2" type="text" placeholder="Middle Name" aria-label="middlename">
-                <input id="txtLastName" class="form-control mt-2" type="text" placeholder="Last Name" aria-label="lastname">
-                <input id="txtAddress1" class="form-control mt-2" type="text" placeholder="Street Address 1" aria-label="streetaddress1">
-                <input id="txtAddress2" class="form-control mt-2" type="text" placeholder="Street Address 2" aria-label="streetaddress2">
-                <input id="txtCity" class="form-control mt-2" type="text" placeholder="City" aria-label="city">
-                <input id="txtState" class="form-control mt-2" type="text" placeholder="State" aria-label="state">
-                <input id="txtZip" class="form-control mt-2" type="text" placeholder="ZIP" aria-label="zip">
-                <input id="txtPhone" class="form-control mt-2" type="tel" placeholder="Phone (111-222-3333)" aria-label="phone number">
                 <button class="btn btn-primary col-12 mt-2" type="button" id="btnRegister" aria-label="Register Button">Register</button>
             </div>
         </form>
@@ -80,14 +73,7 @@
             let strUsername = document.querySelector("#txtRegEmail").value
             const strPassword = $('#txtRegPassword').val()
             let strFirstName = document.querySelector("#txtFirstName").value
-            let strMiddleName = document.querySelector("#txtMiddleName").value
             let strLastName = document.querySelector("#txtLastName").value
-            let strAddress1 = document.querySelector("#txtAddress1").value
-            let strAddress2 = document.querySelector("#txtAddress2").value
-            let strCity = document.querySelector("#txtCity").value
-            let strState = document.querySelector("#txtState").value
-            let strZip = document.querySelector("#txtZip").value
-            let strPhone = document.querySelector("#txtPhone").value
 
             let blnError = false
             let strMessage = ''
@@ -110,26 +96,6 @@
             if(strLastName.length < 1){
                 blnError = true
                 strMessage += '<p class="mb-0 mt-0">Last Name Cannot Be Empty</p>'
-            }
-
-            if(strAddress1.length < 1){
-                blnError = true
-                strMessage += '<p class="mb-0 mt-0">Street Address 1 Cannot Be Empty</p>'
-            }
-
-            if(strCity.length < 1){
-                blnError = true
-                strMessage += '<p class="mb-0 mt-0">City Cannot Be Empty</p>'
-            }
-
-            if(!regZip.test(strZip)){
-                blnError = true
-                strMessage += '<p class="mb-0 mt-0">Zip must be 5 numbers in length</p>'
-            }
-
-            if(!regPhone.test(strPhone)){
-                blnError = true
-                strMessage += '<p class="mb-0 mt-0">Must be of the form xxx-xxx-xxxx</p>'
             }
 
             if(blnError) {
