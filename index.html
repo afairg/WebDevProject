@@ -109,7 +109,13 @@
                         text: "Login Successful!",
                         icon: "success"
                     });
-                    window.location.href = "instructor.html";
+                    // If the email contains ".edu", redirect to instructor.html, else redirect to student.html
+                    if (strUsername.includes(".edu")) {
+                        window.location.href = "instructor.html";
+                    }
+                    else {
+                        window.location.href = "student.html";
+                    }
                 }
             })
         }
