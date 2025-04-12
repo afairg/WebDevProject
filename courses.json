@@ -1,0 +1,150 @@
+[
+    {
+        "strCourseID": 1,
+        "strCourseName": "CSC 1300",
+        "strCourseSection": "001",
+        "students": [
+            {
+                "strStudentID": 1,
+                "strStudentName": "Reed Richards",
+                "strStudentEmail": "mrfantastic@gmail.com",
+                "strStudentDiscord": "ReedRichards#1234",
+                "strStudentTeamsEmail": "mrfantastic@tntech.edu",
+                "strStudentPhone": "123-456-7890"
+            },
+            {
+                "strStudentID": 2,
+                "strStudentName": "Sue Storm",
+                "strStudentEmail": "invisiblewoman@gmail.com",
+                "strStudentDiscord": "SueStorm#5678",
+                "strStudentTeamsEmail": "invisiblewoman@tntech.edu",
+                "strStudentPhone": "098-765-4321"
+            },
+            {
+                "strStudentID": 3,
+                "strStudentName": "Johnny Storm",
+                "strStudentEmail": "humantorch@gmail.com",
+                "strStudentDiscord": "JohnnyStorm#2468",
+                "strStudentTeamsEmail": "humantorch@tntech.edu",
+                "strStudentPhone": "135-791-3579"
+            },
+            {
+                "strStudentID": 4,
+                "strStudentName": "Ben Grimm",
+                "strStudentEmail": "thething@gmail.com",
+                "strStudentDiscord": "BenGrimm#1357",
+                "strStudentTeamsEmail": "thething@tntech.edu",
+                "strStudentPhone": "246-802-4680"
+            },
+            {
+                "strStudentID": 5,
+                "strStudentName": "Victor Von Doom",
+                "strStudentEmail": "drdoom@gmail.com",
+                "strStudentDiscord": "VictorVonDoom#8642",
+                "strStudentTeamsEmail": "drdoom@tntech.edu",
+                "strStudentPhone": "086-420-8642"
+            }
+        ],
+        "groups": [
+            {
+                "strGroupID": 1,
+                "strGroupName": "Group 1",
+                "members": []
+            },
+            {
+                "strGroupID": 2,
+                "strGroupName": "Group 2",
+                "members": []
+            },
+            {
+                "strGroupID": 3,
+                "strGroupName": "Group 3",
+                "members": []
+            },
+            {
+                "strGroupID": 4,
+                "strGroupName": "Group 4",
+                "members": []
+            },
+            {
+                "strGroupID": 5,
+                "strGroupName": "Group 5",
+                "members": []
+            }
+        ]
+    },
+    {
+        "strCourseID": 2,
+        "strCourseName": "CSC 3100",
+        "strCourseSection": "001",
+        "students": [
+            {
+                "strStudentID": 1,
+                "strStudentName": "Reed Richards",
+                "strStudentEmail": "mrfantastic@gmail.com",
+                "strStudentDiscord": "ReedRichards#1234",
+                "strStudentTeamsEmail": "mrfantastic@tntech.edu",
+                "strStudentPhone": "123-456-7890"
+            },
+            {
+                "strStudentID": 2,
+                "strStudentName": "Sue Storm",
+                "strStudentEmail": "invisiblewoman@gmail.com",
+                "strStudentDiscord": "SueStorm#5678",
+                "strStudentTeamsEmail": "invisiblewoman@tntech.edu",
+                "strStudentPhone": "098-765-4321"
+            },
+            {
+                "strStudentID": 3,
+                "strStudentName": "Johnny Storm",
+                "strStudentEmail": "humantorch@gmail.com",
+                "strStudentDiscord": "JohnnyStorm#2468",
+                "strStudentTeamsEmail": "humantorch@tntech.edu",
+                "strStudentPhone": "135-791-3579"
+            },
+            {
+                "strStudentID": 4,
+                "strStudentName": "Ben Grimm",
+                "strStudentEmail": "thething@gmail.com",
+                "strStudentDiscord": "BenGrimm#1357",
+                "strStudentTeamsEmail": "thething@tntech.edu",
+                "strStudentPhone": "246-802-4680"
+            },
+            {
+                "strStudentID": 5,
+                "strStudentName": "Victor Von Doom",
+                "strStudentEmail": "drdoom@gmail.com",
+                "strStudentDiscord": "VictorVonDoom#8642",
+                "strStudentTeamsEmail": "drdoom@tntech.edu",
+                "strStudentPhone": "086-420-8642"
+            }
+        ],
+        "groups": [
+            {
+                "strGroupID": 1,
+                "strGroupName": "Group 1",
+                "members": []
+            },
+            {
+                "strGroupID": 2,
+                "strGroupName": "Group 2",
+                "members": []
+            },
+            {
+                "strGroupID": 3,
+                "strGroupName": "Group 3",
+                "members": []
+            },
+            {
+                "strGroupID": 4,
+                "strGroupName": "Group 4",
+                "members": []
+            },
+            {
+                "strGroupID": 5,
+                "strGroupName": "Group 5",
+                "members": []
+            }
+        ]
+}
+]
