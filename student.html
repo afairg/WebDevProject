@@ -11,7 +11,7 @@
         .btn-custom {
             background-color: white;
             color: black;  
-            transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+            transition: background-color 0.3s, color 0.3s;
         }
         .btn-custom:hover {
             background-color: purple; 
@@ -22,17 +22,16 @@
             color: white; 
         }
         .card {
-            cursor: pointer; /* Make cards clickable */
-            transition: transform 0.2s; /* Smooth scaling */
+            cursor: pointer;
+            transition: transform 0.2s;
         }
         .card:hover {
-            transform: scale(1.02); /* Slightly enlarge on hover */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
+            transform: scale(1.02);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
     </style>
 </head>
 <body class="bg-light">
-    <!----- Instructor Navigation Bar ----->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand font-weight-bold" href="#">Student Interface</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -62,7 +61,7 @@
                         <h2 id="reviewsHeading" role="heading" aria-level="2">Complete Pending Reviews</h2>
                         <button class="btn btn-danger" id="closeReviewsButton" style="display: none;">Close Reviews</button>
                         <div id="pendingReviews" class="table-container" aria-live="polite" style="display: none;"></div>
-                        <div id="reviewForm" style="display: none;"></div> <!-- Placeholder for review form -->
+                        <div id="reviewForm" style="display: none;"></div>
                     </div>
                 </div>
             </div>
@@ -72,7 +71,7 @@
                         <h2 id="reportsHeading" role="heading" aria-level="2">Reports</h2>
                         <button class="btn btn-danger" id="closeReportsButton" style="display: none;">Close Reports</button>
                         <div id="reports" aria-live="polite" style="display: none;"></div>
-                        <div id="reportForm" style="display: none;"></div> <!-- Placeholder for report form -->
+                        <div id="reportForm" style="display: none;"></div>
                     </div>
                 </div>
             </div>
@@ -90,6 +89,17 @@
             { id: 4, title: "Review for Project D", publicFeedback: "Well done, but could use more detail.", score: 75 }
         ];
 
+        document.getElementById('reviewsCard').addEventListener('click', (event) => {
+            if (event.target.tagName !== 'BUTTON') {
+                displayPendingReviews();
+            }
+        });
+        document.getElementById('reportsCard').addEventListener('click', (event) => {
+            if (event.target.tagName !== 'BUTTON') {
+                displayReports();
+            }
+        });
+
         function displayPendingReviews() {
             const reviewsContainer = document.getElementById('pendingReviews');
             reviewsContainer.innerHTML = '';
@@ -104,23 +114,48 @@
 
             pendingReviews.forEach(review => {
                 const row = document.createElement('tr');
-                row.onclick = () => selectReview(review);
                 const cell = document.createElement('td');
                 cell.textContent = review.title;
                 row.appendChild(cell);
+                const buttonCell = document.createElement('td');
+                const viewButton = document.createElement('button');
+                viewButton.classList.add('btn', 'btn-custom');
+                viewButton.textContent = 'View';
+                viewButton.onclick = (event) => {
+                    event.stopPropagation();
+                    selectReview(review);
+                };
+                buttonCell.appendChild(viewButton);
+                row.appendChild(buttonCell);
+
+                row.onclick = (event) => {
+                    if (event.target.tagName !== 'BUTTON') {
+                        selectReview(review);
+                    }
+                };
+
                 table.appendChild(row);
             });
 
             reviewsContainer.appendChild(table);
             reviewsContainer.style.display = 'block';
-            document.getElementById('closeReviewsButton').style.display = 'inline-block'; // Show close button
+            document.getElementById('closeReviewsButton').style.display = 'inline-block';
         }
 
         function selectReview(review) {
             const reviewForm = document.getElementById('reviewForm');
-            reviewForm.innerHTML = ''; // Clear previous form
+            reviewForm.innerHTML = '';
 
             const formData = [
+                {
+                    "label": "Review Title",
+                    "name": "reviewTitle",
+                    "type": "text",
+                    "required": true,
+                    "value": review.title,
+                    "placeholder": "Review Title",
+                    "disabled": true 
+                },
                 {
                     "label": "Review Score",
                     "name": "reviewScore",
@@ -145,41 +180,51 @@
                 }
             ];
 
-            const formBuilder = document.createElement('div');
-            formBuilder.id = 'formBuilder';
-            reviewForm.appendChild(formBuilder);
+            // Create form elements dynamically
+            formData.forEach(field => {
+                const formGroup = document.createElement('div');
+                formGroup.classList.add('form-group');
 
-            // Initialize form builder
-            $(formBuilder).formBuilder({
-                formData: JSON.stringify(formData),
-                onSave: function(evt, formData) {
-                    const score = formData.reviewScore;
-                    const publicFeedback = formData.publicFeedback;
-                    const privateFeedback = formData.privateFeedback;
+                const label = document.createElement('label');
+                label.textContent = field.label;
+                formGroup.appendChild(label);
 
-                    if (!score || !publicFeedback) {
-                        Swal.fire('Error!', 'Please enter a score and public feedback.', 'error');
-                        return;
-                    }
+                const input = document.createElement(field.type === 'textarea' ? 'textarea' : 'input');
+                input.name = field.name;
+                input.type = field.type;
+                input.classList.add('form-control');
+                input.placeholder = field.placeholder;
+                input.required = field.required;
+                if (field.value) input.value = field.value;
+                if (field.disabled) input.disabled = true;
+                if (field.min) input.min = field.min;
+                if (field.max) input.max = field.max;
 
-                    pendingReviews.push({
-                        title: review.title,
-                        publicFeedback: publicFeedback,
-                        score: parseInt(score),
-                        privateFeedback: privateFeedback
-                    });
-
-                    Swal.fire({
-                        title: 'Success!',
-                        text: 'Review submitted successfully.',
-                        icon: 'success',
-                        confirmButtonText: 'OK'
-                    });
-                    displayReports();
-                }
+                formGroup.appendChild(input);
+                reviewForm.appendChild(formGroup);
             });
 
-            reviewForm.style.display = 'block'; // Show the review form
+            const submitButton = document.createElement('button');
+            submitButton.classList.add('btn', 'btn-primary');
+            submitButton.textContent = 'Submit Review';
+            submitButton.onclick = (event) => {
+                event.preventDefault();
+                const newReview = {
+                    id: pendingReviews.length + 1, 
+                    title: review.title, 
+                    score: parseInt(reviewForm.querySelector('input[name="reviewScore"]').value),
+                    publicFeedback: reviewForm.querySelector('textarea[name="publicFeedback"]').value,
+                    privateFeedback: reviewForm.querySelector('textarea[name="privateFeedback"]').value
+                };
+                pendingReviews.push(newReview);
+
+                Swal.fire('Success!', 'New review added successfully.', 'success');
+                reviewForm.style.display = 'none';
+                displayReports();
+            };
+            reviewForm.appendChild(submitButton);
+
+            reviewForm.style.display = 'block';
         }
 
         function displayReports() {
@@ -198,14 +243,14 @@
             for (const title in groupedReviews) {
                 const averageScore = groupedReviews[title].totalScore / groupedReviews[title].count;
                 const reportButton = document.createElement('button');
-                reportButton.classList.add('btn', 'btn-custom');
+                reportButton.classList.add('btn', 'btn-custom', 'mb-2');
                 reportButton.textContent = `${title}: Average Score: ${averageScore.toFixed(2)}`;
                 reportButton.onclick = () => showFeedback(groupedReviews[title].feedbacks);
                 reportsContainer.appendChild(reportButton);
             }
 
             reportsContainer.style.display = 'block';
-            document.getElementById('closeReportsButton').style.display = 'inline-block'; // Show close button
+            document.getElementById('closeReportsButton').style.display = 'inline-block';
         }
 
         function showFeedback(feedbacks) {
@@ -217,26 +262,20 @@
             });
         }
 
-        // Close buttons functionality
         document.getElementById('closeReviewsButton').addEventListener('click', (event) => {
-            event.stopPropagation(); // Prevent the click event from bubbling up to the card
+            event.stopPropagation();
             document.getElementById('pendingReviews').style.display = 'none'; 
             document.getElementById('closeReviewsButton').style.display = 'none'; 
-            document.getElementById('reviewForm').style.display = 'none'; // Hide review form
+            document.getElementById('reviewForm').style.display = 'none';
         });
 
         document.getElementById('closeReportsButton').addEventListener('click', (event) => {
-            event.stopPropagation(); // Prevent the click event from bubbling up to the card
+            event.stopPropagation();
             document.getElementById('reports').style.display = 'none'; 
             document.getElementById('closeReportsButton').style.display = 'none'; 
-            document.getElementById('reportForm').style.display = 'none'; // Hide report form
+            document.getElementById('reportForm').style.display = 'none';
         });
 
-        // Event listeners for clickable cards
-        document.getElementById('reviewsCard').addEventListener('click', displayPendingReviews);
-        document.getElementById('reportsCard').addEventListener('click', displayReports);
-
-        // Logout button functionality
         document.getElementById('logoutButton').addEventListener('click', () => {
             Swal.fire({
                 title: 'Logout',
@@ -247,8 +286,7 @@
                 cancelButtonText: 'No, stay'
             }).then((result) => {
                 if (result.isConfirmed) {
-                    // Redirect to login page or perform logout
-                    window.location.href = 'index.html'; // Adjust as necessary
+                    window.location.href = 'index.html';
                 }
             });
         });
